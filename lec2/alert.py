@@ -1,6 +1,9 @@
 import argparse
 import sys
-import time
+
+from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QApplication, QMessageBox
+
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -23,13 +26,19 @@ def main():
     try:
         secs = float(args.seconds)
         if secs < 0:
-            raise ValueError("초는 0 이상이어야 합니다")
-        time.sleep(secs)
-    except KeyboardInterrupt:
-        print("\n알림이 취소되었습니다.")
-        return
+            raise ValueError
+    except ValueError:
+        parser.error("초는 0 이상이어야 합니다")
 
-    print(message)
+    app = QApplication([])
+    print(sys.argv)
+
+    def show_alert():
+        QMessageBox.information(None, "알림", message)
+        app.quit()
+
+    QTimer.singleShot(int(secs*1000), show_alert)
+    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     main()
