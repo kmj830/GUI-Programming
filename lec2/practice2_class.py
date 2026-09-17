@@ -1,16 +1,17 @@
 import sys
 
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QLabel, QPushButton
 
 def on_click():
-    user_message=le1.text()
-    lbl2.setText(user_message)
+    # user_message=le1.text()
+    # lbl2.setText(user_message)
     window2.show()
 
 def on_click2():
-    le1.setText("")
-    lbl2.setText("")
+    # le1.setText("")
+    # lbl2.setText("")
     window2.close()
 
 
@@ -18,11 +19,10 @@ app = QApplication(sys.argv)
 
 
 window = QWidget()
-
 window2=QWidget()
-window2.setFixedSize(200,100)
-window2.setStyleSheet('background-color: lightgreen')
-lbl2 = QLabel(window2)
+# window2.setFixedSize(200,100)
+# window2.setStyleSheet('background-color: lightgreen')
+# lbl2 = QLabel(window2)
 
 
 window.setWindowTitle("Window 1")
@@ -51,7 +51,11 @@ btn2.setStyleSheet('background-color: lightgreen; font-size: 10px; font-weight:b
 btn2.resize(100, 50)
 btn2.move(250, 200)
 
-
+image_label = QLabel(window2)
+pixmap = QPixmap("assets/image.png")
+image_label.setPixmap(pixmap)
+image_label.setScaledContents(True)
+window2.show()
 
 btn1.clicked.connect(on_click)
 btn2.clicked.connect(on_click2)
