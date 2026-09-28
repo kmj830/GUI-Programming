@@ -6,7 +6,7 @@ from PyQt5.QtGui import QPixmap
 
 from pathlib import Path
 img_path = Path(__file__).parent.parent / "assets" / "image.png"
-new_img_path = Path(__file__).parent.parent / "assets" / "img.png"
+new_img_path = Path(__file__).parent.parent / "assets" / "result_20230176.png"
 print(img_path)
 
 def on_click_change():

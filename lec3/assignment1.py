@@ -87,4 +87,3 @@ class StudentCardApp(QWidget):
     def on_click_clear(self):
         # TODO 9: 입력창 지우기, 라벨 초기화, 사진 hide()
         pass
-
